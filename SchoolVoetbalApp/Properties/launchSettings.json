@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SchoolVoetbalApp (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "SchoolVoetbalApp (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
