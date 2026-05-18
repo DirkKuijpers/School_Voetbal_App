@@ -11,22 +11,24 @@
 
         <StackPanel Spacing="15">
 
-            <TextBlock Text="Wedstrijden" FontSize="28"/>
+            <TextBlock Text="Wedstrijden" FontSize="28"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Center"/>
 
-            <!-- Wedstrijd 1 -->
-            <StackPanel Orientation="Horizontal" Spacing="10">
+            <!-- Test Wedstrijd 1 -->
+            <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Text="Team A vs Team B" Width="200"/>
                 <Button Content="Zet in" Click="Bet_Click"/>
             </StackPanel>
 
-            <!-- Wedstrijd 2 -->
-            <StackPanel Orientation="Horizontal" Spacing="10">
+            <!-- Test Wedstrijd 2 -->
+            <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Text="Team C vs Team D" Width="200"/>
                 <Button Content="Zet in" Click="Bet_Click"/>
             </StackPanel>
 
-            <!-- Wedstrijd 3 -->
-            <StackPanel Orientation="Horizontal" Spacing="10">
+            <!-- Test Wedstrijd 3 -->
+            <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Text="Team E vs Team F" Width="200"/>
                 <Button Content="Zet in" Click="Bet_Click"/>
             </StackPanel>

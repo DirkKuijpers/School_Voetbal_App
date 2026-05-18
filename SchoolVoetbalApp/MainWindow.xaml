@@ -14,45 +14,72 @@
     </Window.SystemBackdrop>
 
     <Grid>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="90"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Background="#1E1E1E">
+        <!-- SIDEBAR -->
+        <Border Grid.Column="0"
+                Background="#1E1E1E"
+                CornerRadius="0,20,20,0">
 
-            <Button Margin="10" Height="70" HorizontalAlignment="Stretch" Click="Home_Click">
-                <StackPanel>
-                    <TextBlock Text="🏠" FontSize="20" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Home" FontSize="10" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
+            <StackPanel>
 
-            <Button Margin="10" Height="70" HorizontalAlignment="Stretch" Click="Matches_Click">
-                <StackPanel>
-                    <TextBlock Text="📋" FontSize="20" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Wedstrijden" FontSize="10" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
+                <!-- HOME -->
+                <Button Margin="10" Height="70" Click="Home_Click">
+                    <StackPanel>
+                        <TextBlock Text="🏠" FontSize="22" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Home" FontSize="10" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
 
-            <StackPanel Height="300"/>
+                <!-- WEDSTRIJDEN -->
+                <Button Margin="10" Height="70" Click="Matches_Click">
+                    <StackPanel>
+                        <TextBlock Text="📋" FontSize="22" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Wedstrijden" FontSize="8" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
 
-            <TextBlock x:Name="SaldoText"
-                       Text="€50"
-                       Foreground="White"
-                       HorizontalAlignment="Center"
-                       Margin="10"/>
+                <!-- STAND -->
+                <Button Margin="10" Height="70" Click="Stand_Click">
+                    <StackPanel>
+                        <TextBlock Text="🏆" FontSize="22" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Stand" FontSize="10" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
 
-            <Button Margin="10" Height="70" HorizontalAlignment="Stretch" Click="Profiel_Click">
-                <StackPanel>
-                    <TextBlock Text="👤" FontSize="20" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Profiel" FontSize="10" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
+                <StackPanel Height="280"/>
 
-        </StackPanel>
+                <!-- SALDO -->
+                <Border Background="#2E7D32"
+                        CornerRadius="10"
+                        Margin="10"
+                        Padding="8">
 
-        <Grid Grid.Column="1">
+                    <TextBlock x:Name="SaldoText"
+                               Text="€0"
+                               Foreground="White"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"/>
+                </Border>
+
+                <!-- PROFIEL -->
+                <Button Margin="10" Height="70" Click="Profiel_Click">
+                    <StackPanel>
+                        <TextBlock Text="👤" FontSize="22" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Profiel" FontSize="10" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+        </Border>
+
+        <!-- MAIN CONTENT -->
+        <Grid Grid.Column="1" Background="#F4F4F4">
             <Frame x:Name="MainFrame"/>
         </Grid>
 
