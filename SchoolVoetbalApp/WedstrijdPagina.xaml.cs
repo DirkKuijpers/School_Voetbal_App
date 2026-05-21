@@ -2,13 +2,12 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Threading.Tasks;
+using SchoolVoetbalApp.Models;
 
 namespace SchoolVoetbalApp
 {
     public sealed partial class WedstrijdPagina : Page
     {
-        private int saldo = 50; // start geld
-
         public WedstrijdPagina()
         {
             InitializeComponent();
@@ -16,6 +15,13 @@ namespace SchoolVoetbalApp
 
         private async void Bet_Click(object sender, RoutedEventArgs e)
         {
+            // Prevent betting when there is no balance
+            if (Session.Balance <= 0)
+            {
+                await ShowError("Je hebt geen saldo om in te zetten.");
+                return;
+            }
+
             TextBox input = new TextBox()
             {
                 PlaceholderText = "Voer bedrag in"
@@ -34,16 +40,17 @@ namespace SchoolVoetbalApp
 
             if (result == ContentDialogResult.Primary)
             {
-                if (int.TryParse(input.Text, out int bedrag))
+                if (double.TryParse(input.Text, out double bedrag))
                 {
-                    if (bedrag > 0 && bedrag <= saldo)
+                    if (bedrag > 0 && bedrag <= Session.Balance)
                     {
-                        saldo -= bedrag;
+                        Session.Balance -= bedrag;
+                        Session.RaiseBalanceChanged();
 
                         ContentDialog confirm = new ContentDialog()
                         {
                             Title = "Succes!",
-                            Content = $"Je hebt €{bedrag} ingezet!\nNieuw saldo: €{saldo}",
+                            Content = $"Je hebt €{bedrag} ingezet!\nNieuw saldo: €{Session.Balance}",
                             CloseButtonText = "OK",
                             XamlRoot = this.Content.XamlRoot
                         };

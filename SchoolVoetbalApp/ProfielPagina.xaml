@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+</Page><?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="SchoolVoetbalApp.ProfielPagina"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:models="using:SchoolVoetbalApp.Models">
 
-    <Grid>
-        <TextBlock Text="Profiel pagina"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   FontSize="30"/>
+    <Grid Padding="20">
+        <StackPanel Spacing="10">
+            <TextBlock Text="Profiel" FontSize="28" HorizontalAlignment="Center"/>
+
+            <TextBlock x:Name="UsernameText" Text="Gebruiker: Gast" FontSize="16"/>
+
+            <TextBlock Text="Ongoing &amp; History Bets" FontSize="18"/>
+
+            <ItemsControl x:Name="BetsList">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="models:Bet">
+                        <Border Background="#EEE" Padding="8" Margin="4" CornerRadius="6">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <TextBlock Text="{x:Bind MatchName}" Width="200"/>
+                                <TextBlock Text="{x:Bind ChosenTeam}" Width="100"/>
+                                <TextBlock Text="€{x:Bind Amount}" Width="80"/>
+                                <TextBlock Text="{x:Bind Won, Converter={StaticResource BoolToWinLossConverter}}" Width="80"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
     </Grid>
 </Page>

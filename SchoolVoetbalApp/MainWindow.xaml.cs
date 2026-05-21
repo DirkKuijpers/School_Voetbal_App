@@ -13,8 +13,18 @@ namespace SchoolVoetbalApp
             // Startpagina
             MainFrame.Navigate(typeof(WedstrijdPagina));
 
-            // Init saldo
+            // Init saldo and listen for updates
             UpdateBalance();
+            Models.Session.BalanceChanged += OnSessionBalanceChanged;
+        }
+
+        private void OnSessionBalanceChanged()
+        {
+            // Ensure update runs on UI thread
+            _ = DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal, () =>
+            {
+                UpdateBalance();
+            });
         }
 
         // 🏠 HOME
@@ -47,7 +57,7 @@ namespace SchoolVoetbalApp
                 MainFrame.Navigate(typeof(ProfielPagina));
             }
 
-            UpdateBalance();
+            // Update happens via Session.BalanceChanged subscription
         }
 
         // 💰 SALDO UPDATE

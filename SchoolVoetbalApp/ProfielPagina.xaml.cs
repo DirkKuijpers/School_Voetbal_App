@@ -26,6 +26,22 @@ namespace SchoolVoetbalApp
         public ProfielPagina()
         {
             InitializeComponent();
+            LoadProfile();
+        }
+
+        private void LoadProfile()
+        {
+            var usernameText = this.FindName("UsernameText") as TextBlock;
+            if (usernameText != null)
+            {
+                usernameText.Text = $"Gebruiker: {Models.Session.Username}";
+            }
+
+            var betsList = this.FindName("BetsList") as ItemsControl;
+            if (betsList != null)
+            {
+                betsList.ItemsSource = Models.BetHistory.Bets;
+            }
         }
     }
 }

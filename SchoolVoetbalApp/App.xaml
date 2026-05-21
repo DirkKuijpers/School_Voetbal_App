@@ -10,6 +10,10 @@
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
+            <!-- Simple converter to show Win/Loss text -->
+            <ResourceDictionary>
+                <local:BoolToWinLossConverter x:Key="BoolToWinLossConverter" />
+            </ResourceDictionary>
             <!-- Other app resources here -->
         </ResourceDictionary>
     </Application.Resources>

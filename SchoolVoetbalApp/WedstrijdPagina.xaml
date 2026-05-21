@@ -16,22 +16,28 @@
                        HorizontalAlignment="Center"/>
 
             <!-- Test Wedstrijd 1 -->
-            <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Team A vs Team B" Width="200"/>
-                <Button Content="Zet in" Click="Bet_Click"/>
-            </StackPanel>
+            <Border Background="White" Padding="12" CornerRadius="8" Width="500" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="Team A vs Team B" Width="350"/>
+                        <Button Content="Zet in" Click="Bet_Click" Tag="Team A vs Team B"/>
+                    </StackPanel>
+            </Border>
 
             <!-- Test Wedstrijd 2 -->
-            <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Team C vs Team D" Width="200"/>
-                <Button Content="Zet in" Click="Bet_Click"/>
-            </StackPanel>
+            <Border Background="White" Padding="12" CornerRadius="8" Width="500" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="Team C vs Team D" Width="350"/>
+                        <Button Content="Zet in" Click="Bet_Click" Tag="Team C vs Team D"/>
+                    </StackPanel>
+            </Border>
 
             <!-- Test Wedstrijd 3 -->
-            <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Team E vs Team F" Width="200"/>
-                <Button Content="Zet in" Click="Bet_Click"/>
-            </StackPanel>
+            <Border Background="White" Padding="12" CornerRadius="8" Width="500" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="Team E vs Team F" Width="350"/>
+                        <Button Content="Zet in" Click="Bet_Click" Tag="Team E vs Team F"/>
+                    </StackPanel>
+            </Border>
 
         </StackPanel>
 
