@@ -1,0 +1,136 @@
+{
+  "teams": [
+    {
+      "id": 1,
+      "name": "Ajax",
+      "goals": 17,
+      "wins": 7
+    },
+    {
+      "id": 2,
+      "name": "Feyenoord",
+      "goals": 29,
+      "wins": 18
+    },
+    {
+      "id": 3,
+      "name": "PSV",
+      "goals": 15,
+      "wins": 8
+    },
+    {
+      "id": 4,
+      "name": "AZ",
+      "goals": 8,
+      "wins": 2
+    },
+    {
+      "id": 5,
+      "name": "Utrecht",
+      "goals": 9,
+      "wins": 4
+    },
+    {
+      "id": 6,
+      "name": "NAC",
+      "goals": 15,
+      "wins": 6
+    },
+    {
+      "id": 7,
+      "name": "PEC",
+      "goals": 15,
+      "wins": 8
+    },
+    {
+      "id": 8,
+      "name": "RKC",
+      "goals": 12,
+      "wins": 4
+    },
+    {
+      "id": 9,
+      "name": "Twente",
+      "goals": 10,
+      "wins": 3
+    },
+    {
+      "id": 10,
+      "name": "Venlo",
+      "goals": 9,
+      "wins": 2
+    }
+  ],
+
+  "matches": [
+    {
+      "id": 1,
+      "homeTeamId": 1,
+      "awayTeamId": 2,
+      "date": "2026-06-10T20:00:00",
+      "status": "upcoming"
+    },
+    {
+      "id": 2,
+      "homeTeamId": 3,
+      "awayTeamId": 4,
+      "date": "2026-06-11T20:00:00",
+      "status": "upcoming"
+    },
+    {
+      "id": 3,
+      "homeTeamId": 5,
+      "awayTeamId": 6,
+      "date": "2026-06-12T20:00:00",
+      "status": "upcoming"
+    },
+    {
+      "id": 4,
+      "homeTeamId": 7,
+      "awayTeamId": 8,
+      "date": "2026-06-13T20:00:00",
+      "status": "upcoming"
+    },
+    {
+      "id": 5,
+      "homeTeamId": 9,
+      "awayTeamId": 10,
+      "date": "2026-06-14T20:00:00",
+      "status": "upcoming"
+    }
+  ],
+
+  "users": [
+    {
+      "id": 1,
+      "username": "Player1",
+      "points": 0
+    },
+    {
+      "id": 2,
+      "username": "Player2",
+      "points": 0
+    }
+  ],
+
+  "predictions": [
+    {
+      "userId": 1,
+      "matchId": 1,
+      "predictedHomeGoals": 2,
+      "predictedAwayGoals": 1
+    },
+    {
+      "userId": 1,
+      "matchId": 2,
+      "predictedHomeGoals": 1,
+      "predictedAwayGoals": 1
+    },
+    {
+      "userId": 2,
+      "matchId": 1,
+      "predictedHomeGoals": 0,
+      "predictedAwayGoals": 2
+    }
+  ]
+}
