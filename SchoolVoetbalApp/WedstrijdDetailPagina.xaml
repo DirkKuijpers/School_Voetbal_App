@@ -1,0 +1,25 @@
+<Page
+    x:Class="SchoolVoetbalApp.WedstrijdDetailPagina"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SchoolVoetbalApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Loaded="Page_Loaded">
+
+    <Grid Padding="20">
+        <StackPanel Spacing="12">
+            <TextBlock x:Name="MatchTitle" Text="Team A vs Team B" FontSize="24" FontWeight="SemiBold" Foreground="#1B5E20"/>
+            <TextBlock x:Name="MatchTime" Text="Zondag 15:00" FontSize="14" Foreground="#666"/>
+
+            <Border Background="White" CornerRadius="8" Padding="12" Width="600">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Voorspelling" FontSize="16" FontWeight="SemiBold"/>
+                    <TextBlock x:Name="PredictionText" Text="Team A kans 60% - Team B kans 40%"/>
+                    <Button Content="Zet in" Click="Bet_Click" HorizontalAlignment="Right" Background="#1B5E20" Foreground="White"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>

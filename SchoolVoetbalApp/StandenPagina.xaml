@@ -4,10 +4,77 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Grid>
-        <TextBlock Text="Standen pagina"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontSize="30"/>
+    <Grid Padding="20">
+        <StackPanel Spacing="12">
+            <TextBlock Text="Seizoens Overzicht" FontSize="28" FontWeight="SemiBold" Foreground="#1B5E20" HorizontalAlignment="Center" />
+
+            <StackPanel Spacing="12" HorizontalAlignment="Center">
+                <Border Background="White" CornerRadius="20" Padding="12" Margin="6" Width="380">
+                    <StackPanel>
+                        <TextBlock Text="Top 10 - Meeste Overwinningen" FontSize="16" FontWeight="SemiBold" Foreground="#2E7D32" Margin="0,0,0,8" />
+                        <ItemsControl x:Name="TopWinsList">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnSpacing="8">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="36" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="60" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Rank}" HorizontalAlignment="Center" />
+                                        <TextBlock Grid.Column="1" Text="{Binding Team}" />
+                                        <TextBlock Grid.Column="2" Text="{Binding Wins}" HorizontalAlignment="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="White" CornerRadius="20" Padding="12" Margin="6" Width="380">
+                    <StackPanel>
+                        <TextBlock Text="Top 10 - Meeste Goals" FontSize="16" FontWeight="SemiBold" Foreground="#2E7D32" Margin="0,0,0,8" />
+                        <ItemsControl x:Name="TopGoalsList">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnSpacing="8">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="36" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="60" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Rank}" HorizontalAlignment="Center" />
+                                        <TextBlock Grid.Column="1" Text="{Binding Team}" />
+                                        <TextBlock Grid.Column="2" Text="{Binding Goals}" HorizontalAlignment="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="White" CornerRadius="20" Padding="12" Margin="6" Width="380">
+                    <StackPanel>
+                        <TextBlock Text="Top 10 - Punten (Promotie)" FontSize="16" FontWeight="SemiBold" Foreground="#2E7D32" Margin="0,0,0,8" />
+                        <ItemsControl x:Name="TopPointsList">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnSpacing="8">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="36" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="60" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Rank}" HorizontalAlignment="Center" />
+                                        <TextBlock Grid.Column="1" Text="{Binding Team}" />
+                                        <TextBlock Grid.Column="2" Text="{Binding Points}" HorizontalAlignment="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>
