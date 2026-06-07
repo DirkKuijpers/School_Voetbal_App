@@ -6,16 +6,64 @@ namespace SchoolVoetbalApp
 {
     public sealed partial class MainWindow : Window
     {
+        // Singleton-like instance to allow Pages to request navigation
+        public static MainWindow? Instance { get; private set; }
+
         public MainWindow()
         {
             this.InitializeComponent();
 
+            Instance = this;
+
+            // Try to load image; if missing, keep fallback visible
+            // Defer loading image until visual tree ready
+            _ = DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal, () =>
+            {
+                try
+                {
+                    var img = (Microsoft.UI.Xaml.Controls.Image)MainFrame?.FindName("LogoImage") ?? null;
+                    var fallback = (Microsoft.UI.Xaml.FrameworkElement)MainFrame?.FindName("LogoFallback") ?? null;
+                    if (img != null)
+                    {
+                        var uri = new System.Uri("ms-appx:///Assets/logo.png");
+                        img.Source = new Microsoft.UI.Xaml.Media.Imaging.BitmapImage(uri);
+                        if (fallback != null) fallback.Visibility = Microsoft.UI.Xaml.Visibility.Collapsed;
+                    }
+                }
+                catch
+                {
+                    // ignore and keep fallback
+                }
+            });
+
             // Startpagina
-            MainFrame.Navigate(typeof(WedstrijdPagina));
+            MainFrame.Navigate(typeof(HomePagina));
 
             // Init saldo and listen for updates
             UpdateBalance();
             Models.Session.BalanceChanged += OnSessionBalanceChanged;
+        }
+
+        // Allow other pages to navigate via the main frame
+        public void NavigateTo(System.Type pageType, object? parameter = null)
+        {
+            if (MainFrame != null)
+            {
+                MainFrame.Navigate(pageType, parameter);
+                _ = DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal, () =>
+                {
+                    try
+                    {
+                        var homeBtn = (this.Content as FrameworkElement)?.FindName("HomeButton") as Microsoft.UI.Xaml.Controls.Button;
+                        if (homeBtn != null)
+                        {
+                            var isHome = pageType == typeof(HomePagina);
+                            homeBtn.Background = isHome ? new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Green) : new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Transparent);
+                        }
+                    }
+                    catch { }
+                });
+            }
         }
 
         private void OnSessionBalanceChanged()
@@ -30,13 +78,16 @@ namespace SchoolVoetbalApp
         // 🏠 HOME
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(typeof(WedstrijdPagina));
+            MainFrame.Navigate(typeof(HomePagina));
         }
 
         // 📋 WEDSTRIJDEN
         private void Matches_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(typeof(WedstrijdPagina));
+            if (MainFrame != null)
+            {
+                MainFrame.Navigate(typeof(WedstrijdPagina));
+            }
         }
 
         // 🏆 STAND
@@ -65,13 +116,12 @@ namespace SchoolVoetbalApp
         {
             if (SaldoText == null) return;
 
-            if (Session.IsLoggedIn)
+            // Always show the current session balance (works for guests and logged-in users)
+            SaldoText.Text = $"€{Session.Balance:F2}";
+
+            if (UsernameText != null)
             {
-                SaldoText.Text = $"€{Session.Balance}";
-            }
-            else
-            {
-                SaldoText.Text = "€0";
+                UsernameText.Text = Session.IsLoggedIn ? $"Ingelogd als: {Session.Username}" : "Niet ingelogd";
             }
         }
 

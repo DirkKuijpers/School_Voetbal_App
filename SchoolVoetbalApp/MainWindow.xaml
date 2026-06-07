@@ -16,63 +16,63 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="90"/>
+            <!-- Sidebar ruimte voor tekst -->
+            <ColumnDefinition Width="240"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- SIDEBAR -->
+        <!-- Sidebar -->
         <Border Grid.Column="0"
-                Background="#1E1E1E"
+                Background="#121212"
                 CornerRadius="0,20,20,0">
 
             <StackPanel>
+                <Border Background="Transparent" Padding="12" HorizontalAlignment="Center">
+                    <Grid Width="80" Height="80">
+                        <Image x:Name="LogoImage" Width="80" Height="80" Stretch="Uniform"/>
+                        <Grid x:Name="LogoFallback" Visibility="Collapsed">
+                            <Ellipse Fill="#2E7D32" Stroke="#1B5E20" StrokeThickness="2" />
+                            <TextBlock Text="SV" Foreground="White" FontWeight="Bold" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Border>
 
-                <!-- HOME -->
-                <Button Margin="10" Height="70" Click="Home_Click">
-                    <StackPanel>
-                        <TextBlock Text="🏠" FontSize="22" HorizontalAlignment="Center"/>
-                        <TextBlock Text="Home" FontSize="10" HorizontalAlignment="Center"/>
-                    </StackPanel>
+                <!-- Nav -->
+                <Button x:Name="HomeButton" Margin="12,12,12,6" Height="52" Click="Home_Click" Background="#1B5E20" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="14,0">
+                    <TextBlock Text="Home" FontSize="16"/>
                 </Button>
 
-                <!-- WEDSTRIJDEN -->
-                <Button Margin="10" Height="70" Click="Matches_Click">
-                    <StackPanel>
-                        <TextBlock Text="📋" FontSize="22" HorizontalAlignment="Center"/>
-                        <TextBlock Text="Wedstrijden" FontSize="8" HorizontalAlignment="Center"/>
-                    </StackPanel>
+                <Button Margin="12,6" Height="52" Click="Matches_Click" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="14,0">
+                    <TextBlock Text="Wedstrijden" FontSize="16"/>
                 </Button>
 
-                <!-- STAND -->
-                <Button Margin="10" Height="70" Click="Stand_Click">
-                    <StackPanel>
-                        <TextBlock Text="🏆" FontSize="22" HorizontalAlignment="Center"/>
-                        <TextBlock Text="Stand" FontSize="10" HorizontalAlignment="Center"/>
-                    </StackPanel>
+                <Button Margin="12,6" Height="52" Click="Stand_Click" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="14,0">
+                    <TextBlock Text="Stand" FontSize="16"/>
                 </Button>
 
                 <StackPanel Height="280"/>
 
-                <!-- SALDO -->
+                <!-- Saldo-->
                 <Border Background="#2E7D32"
                         CornerRadius="10"
                         Margin="10"
                         Padding="8">
 
-                    <TextBlock x:Name="SaldoText"
-                               Text="€0"
-                               Foreground="White"
-                               FontSize="18"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"/>
+                    <StackPanel>
+                        <TextBlock Text="Saldo" Foreground="White" FontSize="12" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="SaldoText"
+                                   Text="€0"
+                                   Foreground="White"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="UsernameText" Text="Niet ingelogd" Foreground="White" FontSize="12" HorizontalAlignment="Center" Margin="0,6,0,0"/>
+                    </StackPanel>
                 </Border>
 
-                <!-- PROFIEL -->
-                <Button Margin="10" Height="70" Click="Profiel_Click">
-                    <StackPanel>
-                        <TextBlock Text="👤" FontSize="22" HorizontalAlignment="Center"/>
-                        <TextBlock Text="Profiel" FontSize="10" HorizontalAlignment="Center"/>
-                    </StackPanel>
+                <!-- Profiel -->
+                <Button Margin="12,6" Height="52" Click="Profiel_Click" Background="Transparent" Foreground="White" BorderThickness="0" HorizontalContentAlignment="Left" Padding="14,0">
+                    <TextBlock Text="Profiel" FontSize="16"/>
                 </Button>
 
             </StackPanel>
