@@ -11,9 +11,19 @@
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
             <!-- Simple converter to show Win/Loss text -->
-            <ResourceDictionary>
-                <local:BoolToWinLossConverter x:Key="BoolToWinLossConverter" />
-            </ResourceDictionary>
+            <local:BoolToWinLossConverter x:Key="BoolToWinLossConverter" />
+
+            <!-- Page background: subtle green to white gradient -->
+            <Style TargetType="Page">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#E8F5E9" Offset="0" />
+                            <GradientStop Color="White" Offset="1" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <!-- Other app resources here -->
         </ResourceDictionary>
     </Application.Resources>
