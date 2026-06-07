@@ -5,9 +5,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Grid>
-        <TextBlock Text="Login pagina"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   FontSize="30"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="360" Spacing="12">
+            <TextBlock Text="Login / Registreren" FontSize="28" HorizontalAlignment="Center" Foreground="#1B5E20" FontWeight="SemiBold"/>
+
+            <TextBox x:Name="UsernameBox" PlaceholderText="Gebruikersnaam" Margin="0,6"/>
+            <PasswordBox x:Name="PasswordBox" PlaceholderText="Wachtwoord" Margin="0,6"/>
+
+            <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
+                <Button Content="Login" Click="Login_Click" Background="#1B5E20" Foreground="White" Padding="14,8"/>
+                <Button Content="Register" Click="Register_Click" Background="Transparent" BorderBrush="#1B5E20" Foreground="#1B5E20" Padding="14,8"/>
+            </StackPanel>
+
+            <TextBlock x:Name="StatusText" Text="" FontSize="14" HorizontalAlignment="Center" Margin="0,8,0,0"/>
+        </StackPanel>
     </Grid>
 </Page>
