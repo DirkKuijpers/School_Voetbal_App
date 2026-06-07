@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-</Page><?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="SchoolVoetbalApp.ProfielPagina"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -8,27 +7,36 @@
     xmlns:models="using:SchoolVoetbalApp.Models">
 
     <Grid Padding="20">
-        <StackPanel Spacing="10">
-            <TextBlock Text="Profiel" FontSize="28" HorizontalAlignment="Center"/>
+        <StackPanel Spacing="12">
+            <TextBlock Text="Profiel" FontSize="28" FontWeight="SemiBold" Foreground="#1B5E20" HorizontalAlignment="Center"/>
 
-            <TextBlock x:Name="UsernameText" Text="Gebruiker: Gast" FontSize="16"/>
+            <Border Background="White" CornerRadius="8" Padding="12" Margin="6">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Spacing="12">
+                        <StackPanel>
+                            <TextBlock x:Name="UsernameText" Text="Gebruiker: Gast" FontSize="16" FontWeight="SemiBold" Foreground="#2E7D32"/>
+                            <TextBlock x:Name="ProfileSaldoText" Text="Saldo: €0.00" FontSize="14" Foreground="#1B5E20"/>
+                        </StackPanel>
+                    </StackPanel>
 
-            <TextBlock Text="Ongoing &amp; History Bets" FontSize="18"/>
+                    <TextBlock Text="Historie &amp; Lopende weddenschappen" FontSize="18" Margin="0,12,0,8"/>
 
-            <ItemsControl x:Name="BetsList">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate x:DataType="models:Bet">
-                        <Border Background="#EEE" Padding="8" Margin="4" CornerRadius="6">
-                            <StackPanel Orientation="Horizontal" Spacing="10">
-                                <TextBlock Text="{x:Bind MatchName}" Width="200"/>
-                                <TextBlock Text="{x:Bind ChosenTeam}" Width="100"/>
-                                <TextBlock Text="€{x:Bind Amount}" Width="80"/>
-                                <TextBlock Text="{x:Bind Won, Converter={StaticResource BoolToWinLossConverter}}" Width="80"/>
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                    <ItemsControl x:Name="BetsList">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="models:Bet">
+                                <Border Background="#F6F6F6" Padding="8" Margin="4" CornerRadius="6">
+                                    <StackPanel Orientation="Horizontal" Spacing="10">
+                                        <TextBlock Text="{x:Bind MatchName}" Width="220"/>
+                                        <TextBlock Text="{x:Bind ChosenTeam}" Width="120"/>
+                                        <TextBlock Text="€{x:Bind Amount}" Width="80"/>
+                                        <TextBlock Text="{x:Bind Won, Converter={StaticResource BoolToWinLossConverter}}" Width="80"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Border>
         </StackPanel>
     </Grid>
 </Page>

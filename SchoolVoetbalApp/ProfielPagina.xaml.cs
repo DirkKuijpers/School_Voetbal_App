@@ -26,10 +26,10 @@ namespace SchoolVoetbalApp
         public ProfielPagina()
         {
             InitializeComponent();
-            LoadProfile();
+            LoadBets();
         }
 
-        private void LoadProfile()
+        private void LoadBets()
         {
             var usernameText = this.FindName("UsernameText") as TextBlock;
             if (usernameText != null)
@@ -37,10 +37,19 @@ namespace SchoolVoetbalApp
                 usernameText.Text = $"Gebruiker: {Models.Session.Username}";
             }
 
+            var saldoText = this.FindName("ProfileSaldoText") as TextBlock;
+            if (saldoText != null)
+            {
+                saldoText.Text = $"Saldo: €{Models.Session.Balance:F2}";
+            }
+
             var betsList = this.FindName("BetsList") as ItemsControl;
             if (betsList != null)
             {
-                betsList.ItemsSource = Models.BetHistory.Bets;
+                // show bets only for current user
+                var username = Models.Session.Username ?? string.Empty;
+                var list = Models.BetHistory.Bets.FindAll(b => b.OwnerUsername == username);
+                betsList.ItemsSource = list;
             }
         }
     }
