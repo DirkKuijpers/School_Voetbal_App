@@ -16,5 +16,9 @@ namespace SchoolVoetbalApp.Models
 
         public bool Won { get; set; }
 
+        public bool IsSettled { get; set; } = false;
+
+        public string OwnerUsername { get; set; } = string.Empty;
+
     }
 }
